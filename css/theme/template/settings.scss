@@ -8,6 +8,7 @@ $backgroundColor: #2b2b2b;
 $mainFont: 'Lato', sans-serif;
 $mainFontSize: 40px;
 $mainColor: #eee;
+$secondaryColor: #4341f4;
 
 // Vertical spacing between blocks of text
 $blockMargin: 20px;
@@ -39,5 +40,58 @@ $selectionColor: #fff;
 // Generates the presentation background, can be overridden
 // to return a background image or gradient
 @mixin bodyBackground() {
-	background: $backgroundColor;
+  background: $backgroundColor;
+}
+
+/*********************************************
+ * CUSTOMIZATIONS
+ *********************************************/
+
+//  inspired by https://stephaniewalter.fr/slides/2013-web5/#/17
+.reveal .vertsep {
+  position: relative;
+  margin-top: 100px;
+}
+
+.reveal p {
+  margin-bottom: 10px;
+  line-height: 1.2em;
+}
+
+.reveal .vertsep:after,
+.reveal .vertsep:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 3px;
+  width: 40%;
+  background: rgba(190,190,189,.5);
+}
+
+.reveal .vertsep:before {
+  left: 0;
+}
+
+.reveal .vertsep:after {
+  right: 0;
+}
+
+.reveal .num {
+  display: inline-block;
+  color: $mainColor;
+  padding: 17px 20px;
+  line-height: 30px;
+  font-size: 1.1em;
+  border-radius: 50% 50%;
+  background: $secondaryColor;
+  font-family: $mainFont;
+}
+
+.reveal .offcolor {
+  background: $secondaryColor;
+}
+
+.reveal .strip {
+  border: none;
+  box-shadow: none;
 }

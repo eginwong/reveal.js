@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/eginwong.css">
+
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-markdown>
+				<script type="text/template">
+					<!-- .slide: data-background-image="images/fff-0-david.jpg" -->
+					# _f f f_
+					#### (free form fridays)
+					<br>
+					<br>
+					<br>
+					by: eric wong
+				</script>
+			</section>
+			<section>
+				<h2>Why? 🤨</h2>
+				<p class="vertsep">
+					<span class="num">1</span>
+				</p>
+			</section>
+			<section>
+				<section>
+					<img data-src="images/fff-0-training.png" width="50%">
+					<br>
+					<h3>Training</h3>
+				</section>
+				<section>
+					<img data-src="images/fff-0-innovation.jpg" width="50%">
+					<br>
+					<h3>Innovation</h3>
+				</section>
+				<section>
+					<img data-src="images/fff-0-community-banner.png" width="50%">
+					<br>
+					<h3>Community of Practice</h3>
+				</section>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					<!-- .slide: data-background-image="images/fff-0-invest-in-employees.png" data-background-size="400px"
+					data-transition="fade-in slide-out" -->
+				</script>
+			</section>
+			<section>
+				<h2>What? 😮</h2>
+				<p class="vertsep">
+					<span class="num">2</span>
+				</p>
+			</section>
+			<section>
+				<img data-src="images/fff-0-cycle.png" width="60%" class="strip">
+			</section>
+			<section>
+				<h2>🕐 When? 🕔</h2>
+				<p class="vertsep">
+					<span class="num">3</span>
+				</p>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					## fridays
+					### 1300 - 1700
+				</textarea>
+			</section>
+			<section>
+				<h2>Who?</h2>
+				<p class="vertsep">
+					<span class="num">4</span>
+				</p>
+				<br>
+				<h3 class="fragment">👽👾🤖
+					<br>👻👹🧟
+					<br>🦄🥓🤺</h3>
+			</section>
+			<section>
+				<a href="https://join.slack.com/t/cgi-global-wealth/shared_invite/enQtMzU3OTgyNzI2NDIxLWQ1ODI3YThlYWVmNWMwYTM4OTFkZDA2MzZjZTM4ZjMxYjdmZWQ1MTU2MzEyOTUwZGFmNjgzOTMxNDMxODdiYjM">
+					<img src="images/fff-0-slack.png" class="strip">
+				</a>
+				<br> (slack channel)
+			</section>
+			<section>
+				<h2>What next? 🧐🧐🧐</h2>
+				<p class="vertsep">
+					<span class="num">5</span>
+				</p>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					## Ideas
+					* Containerization 🐳
+					* Testing (mutation, property-based, contract)
+					* Tooling/Libraries (Grunt, Webpack, immutable.js)
+					* Languages (Haskell, Elm, Elixir, Ruby)
+					* Machine Learning, Crypto, AI
+					* anything interesting!
+				</textarea>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+
+		// for any reference:
+		// https://github.com/hakimel/reveal.js#online-editor
+		Reveal.initialize({
+			controlsLayout: 'edges',
+			slideNumber: 'c/t',
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>

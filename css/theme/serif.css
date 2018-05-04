@@ -4,6 +4,49 @@
  *
  * This theme is Copyright (C) 2012-2013 Owen Versteeg, http://owenversteeg.com - it is MIT licensed.
  */
+/*********************************************
+ * CUSTOMIZATIONS
+ *********************************************/
+.reveal .vertsep {
+  position: relative;
+  margin-top: 100px; }
+
+.reveal p {
+  margin-bottom: 10px;
+  line-height: 1.2em; }
+
+.reveal .vertsep:after,
+.reveal .vertsep:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 3px;
+  width: 40%;
+  background: rgba(190, 190, 189, 0.5); }
+
+.reveal .vertsep:before {
+  left: 0; }
+
+.reveal .vertsep:after {
+  right: 0; }
+
+.reveal .num {
+  display: inline-block;
+  color: #eee;
+  padding: 17px 20px;
+  line-height: 30px;
+  font-size: 1.1em;
+  border-radius: 50% 50%;
+  background: #4341f4;
+  font-family: "Lato", sans-serif; }
+
+.reveal .offcolor {
+  background: #4341f4; }
+
+.reveal .strip {
+  border: none;
+  box-shadow: none; }
+
 .reveal a {
   line-height: 1.3em; }
 

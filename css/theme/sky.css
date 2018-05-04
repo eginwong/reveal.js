@@ -3,8 +3,51 @@
  *
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
+/*********************************************
+ * CUSTOMIZATIONS
+ *********************************************/
 @import url(https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+.reveal .vertsep {
+  position: relative;
+  margin-top: 100px; }
+
+.reveal p {
+  margin-bottom: 10px;
+  line-height: 1.2em; }
+
+.reveal .vertsep:after,
+.reveal .vertsep:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  height: 3px;
+  width: 40%;
+  background: rgba(190, 190, 189, 0.5); }
+
+.reveal .vertsep:before {
+  left: 0; }
+
+.reveal .vertsep:after {
+  right: 0; }
+
+.reveal .num {
+  display: inline-block;
+  color: #eee;
+  padding: 17px 20px;
+  line-height: 30px;
+  font-size: 1.1em;
+  border-radius: 50% 50%;
+  background: #4341f4;
+  font-family: "Lato", sans-serif; }
+
+.reveal .offcolor {
+  background: #4341f4; }
+
+.reveal .strip {
+  border: none;
+  box-shadow: none; }
+
 .reveal a {
   line-height: 1.3em; }
 
