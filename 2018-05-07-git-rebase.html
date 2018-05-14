@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>git-pr</title>
+	<title>git-rebase</title>
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/eginwong.css">
@@ -28,31 +28,36 @@
 	<div class="reveal">
 		<div class="slides">
 			<section>
-				<img data-src="images/git-pr/pr-icon.png" width="20%" class="clearheaded">
-				<h3>Pull Requests (PR)</h3>
+				<img data-src="images/git-rebase/title.png" class="clearheaded">
+				<h3>Git Rebase</h3>
 				<br>
-				<br> 
+				<br>
 				<h6>eric.t.wong@cgi.com</h6>
 			</section>
 			<section>
 				<section>
-					<h2>What? 🔥</h2>
+					<h2>What?</h2>
 					<p class="vertsep">
 						<span class="num">1</span>
 					</p>
 				</section>
 				<section data-markdown>
-					> ... pull requests are a mechanism for a developer to notify team members that they have completed a feature -[Atlassian](https://www.atlassian.com/git/tutorials/making-a-pull-request)
+					> Once you understand what rebasing is, the most important thing to learn is when not to do it. The golden rule of `git rebase`
+					is to never use it on public branches. 
+					
+					-[Atlassian](https://www.atlassian.com/git/tutorials/making-a-pull-request)
 				</section>
 				<section>
-					<img data-src="images/git-pr/pr-workflow.png" width="50%">
-					<br>
-					<h4>PR Workflow</h4>
+					<img data-src="images/git-rebase/merge.png" width="50%">
 				</section>
 				<section>
-					<img class="clearheaded" data-src="images/git-pr/enforcement.png" width="30%">
-					<br>
-					<h4>Enforce code standards/reviews</h4>
+					<img data-src="images/git-rebase/rebase.png" width="50%">
+				</section>
+				<section>
+					<img data-src="images/git-rebase/bad-history.png" width="30%">
+					<div style="display:inline; padding:30px"></div>
+					<img data-src="images/git-rebase/good-history.png" width="30%">
+					<br> versus
 				</section>
 			</section>
 			<section>
@@ -62,44 +67,64 @@
 						<span class="num">2</span>
 					</p>
 				</section>
+			</section>
+			<section>
 				<section>
-					<img class="clearheaded" data-src="images/git-pr/git-pr-1.png">
+					Eclipse
 				</section>
 				<section>
-					<img class="clearheaded" data-src="images/git-pr/git-pr-2.png">
+					<img class="clearheaded" data-src="images/git-rebase/eclipse-1.png">
 				</section>
 				<section>
-					<img class="clearheaded" data-src="images/git-pr/git-pr-3.png">
+					<img class="clearheaded" data-src="images/git-rebase/eclipse-2.png">
 				</section>
 				<section>
-					<img class="clearheaded" data-src="images/git-pr/git-pr-4.png">
-				</section>
-				<section>
-					<img class="clearheaded" data-src="images/git-pr/git-pr-5.png">
-				</section>
-				<section>
-					<img class="clearheaded" data-src="images/git-pr/git-pr-6.png">
-				</section>
-				<section>
-					<img class="clearheaded" data-src="images/git-pr/git-pr-7.png">
+					<img class="clearheaded" data-src="images/git-rebase/eclipse-3.png" width="60%">
 				</section>
 			</section>
 			<section>
 				<section>
-					<h2>What next? 🧐🧐🧐</h2>
-					<p class="vertsep">
-						<span class="num">3</span>
-					</p>
+					SourceTree
 				</section>
 				<section>
-					<img class="clearheaded" data-src="images/git-pr/git-icon.png" width="20%">
+					<img class="clearheaded" data-src="images/git-rebase/sourcetree-1.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-rebase/sourcetree-2.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-rebase/sourcetree-3.png">
+				</section>
+			</section>
+			<section>
+				<section>
+					Gitkraken
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-rebase/rebase-1.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-rebase/rebase-2.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-rebase/rebase-3.png">
+				</section>
+			</section>
+			<section>
+				<section>
+					Terminal/Command Line 😫😫😫
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-rebase/cli-1.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-rebase/cli-2.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-rebase/cli-before.png" width="40%">
+					<img class="clearheaded" data-src="images/git-rebase/cli-after.png" width="40%">
 					<br>
-					<ul>
-						<li>Review git merge/rebase</li>
-						<li>Team agreement on review turnaround time</li>
-						<li>Improved CI/CD pipeline for testing</li>
-						<li>Increase number of default reviewers</li>
-					</ul>
+					<h6>before / after</h6>
 				</section>
 			</section>
 		</div>
