@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>git-pr</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/eginwong.css">
+
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<img data-src="images/git-pr/pr-icon.png" width="20%" class="clearheaded">
+				<h3>Pull Requests (PR)</h3>
+				<br>
+				<br> by: eric wong
+			</section>
+			<section>
+				<section>
+					<h2>What? 🔥</h2>
+					<p class="vertsep">
+						<span class="num">1</span>
+					</p>
+				</section>
+				<section data-markdown>
+					> ... pull requests are a mechanism for a developer to notify team members that they have completed a feature -[Atlassian](https://www.atlassian.com/git/tutorials/making-a-pull-request)
+				</section>
+				<section>
+					<img data-src="images/git-pr/pr-workflow.png" width="50%">
+					<br>
+					<h4>PR Workflow</h4>
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-pr/enforcement.png" width="30%">
+					<br>
+					<h4>Enforce code standards/reviews</h4>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>How? 🤔</h2>
+					<p class="vertsep">
+						<span class="num">2</span>
+					</p>
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-pr/git-pr-1.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-pr/git-pr-2.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-pr/git-pr-3.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-pr/git-pr-4.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-pr/git-pr-5.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-pr/git-pr-6.png">
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-pr/git-pr-7.png">
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>What next? 🧐🧐🧐</h2>
+					<p class="vertsep">
+						<span class="num">3</span>
+					</p>
+				</section>
+				<section>
+					<img class="clearheaded" data-src="images/git-pr/git-icon.png" width="20%">
+					<br>
+					<ul>
+						<li>Review git merge/rebase</li>
+						<li>Team agreement on review turnaround time</li>
+						<li>Improved CI/CD pipeline for testing</li>
+						<li>Increase number of default reviewers</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+
+		// for any reference:
+		// https://github.com/hakimel/reveal.js#online-editor
+		Reveal.initialize({
+			controlsLayout: 'edges',
+			slideNumber: 'c/t',
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
