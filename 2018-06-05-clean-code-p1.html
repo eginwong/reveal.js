@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>clean code, p1</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/eginwong.css">
+
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<img data-src="images/clean-code/clean-code-text-book.jpg" class="clearheaded">
+				<h3>Clean Code, part 1</h3>
+				<br>
+				<br>
+				<h6>eric.t.wong@cgi.com</h6>
+			</section>
+			<section>
+				<section>
+					<h2>What?</h2>
+					<p class="vertsep">
+						<span class="num">1</span>
+					</p>
+				</section>
+				<section>
+					Clean code is:
+					<p class="fragment">elegant</p>
+					<p class="fragment">clear to read</p>
+					<p class="fragment">cared for</p>
+					<p class="fragment">tested</p>
+					<p class="fragment">without duplication</p>
+					<p class="fragment">expressive</p>
+					<p class="fragment">with one purpose</p>
+				</section>
+				<section>
+					<img data-src="images/clean-code/clean-code-russell.jpg" class="clearheaded">
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>How? 🤔</h2>
+					<p class="vertsep">
+						<span class="num">2</span>
+					</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					General
+				</section>
+				<section>
+					<pre class="python"><code>
+def draw_path(self, svg_path):
+	s = svg_path.replace(',', ' ').split(' ')
+	points = []
+
+	for i in range(len(s)):
+		if (s[i] == 'z' or s[i] == 'Z'):
+			if (points != []):
+				points+=[points[0]]
+	...
+					</code></pre>
+					<aside>bad naming</aside>
+				</section>
+				<section>
+					<pre class="java"><code>
+public UserForm(Game gammme, Player plyer) {
+	game = gammme;
+	player = plyer;
+}
+					</code></pre>
+					<aside>mis-naming</aside>
+				</section>
+				<section>
+					<pre class="java"><code>
+@Override
+protected boolean validate(StartGeneralInstructionsWorkflowRequest req, ConstraintValidatorContext ctx) {
+  if (null == req.getParameters().getAccountId() ||
+    null == req.getParameters().getAccountNumber() || 
+    0 == req.getParameters().getAccountNumber().trim().length() ||
+    null == req.getParameters().getAccountName() || 
+    0 == req.getParameters().getAccountName().trim().length() ||
+    null == req.getParameters().getRepCode() || 
+    0 == req.getParameters().getRepCode().trim().length() ||
+    null == req.getParameters().getRequestTypeId() || 
+    0 == req.getParameters().getRequestTypeId().trim().length() ||
+    null == req.getParameters().getDueDate()) {
+      addConstraintViolation(ctx, req.getParameters().getAccountId(), req.getParameters().getAccountNumber(), req.getParameters().getAccountName(), req.getParameters().getRepCode(), req.getParameters().getRequestTypeId(), req.getParameters().getDueDate());
+      return false;
+  }
+  return true;
+}
+</code></pre>
+					<aside>why not use a variable?</aside>
+					<aside>why not create a method?</aside>
+				</section>
+				<section>
+					<pre class="java"><code>
+@Override
+protected boolean validate(StartGeneralInstructionsWorkflowRequest req, ConstraintValidatorContext ctx) {
+  ParamsObj params = req.getParameters();
+  
+  if (checkNull(params.getAccountId()) ||
+    checkNull(params.getAccountNumber()) || 
+    checkLength(params.getAccountNumber()) ||
+    checkNull(params.getAccountName()) || 
+    checkLength(params.getAccountName()) ||
+    checkNull(params.getRepCode()) || 
+    checkLength(params.getRepCode()) ||
+    checkNull(params.getRequestTypeId()) || 
+    checkLength(params.getRequestTypeId()) ||
+    checkNull(params.getDueDate())) {
+      addConstraintViolation(ctx, params.getAccountId(),   params.getAccountNumber(), params.getAccountName(),   params.getRepCode(), params.getRequestTypeId(),   params.getDueDate());
+      return false;
+    }
+  return true;
+}
+						</code></pre>
+					<aside>Can we do even better?</aside>
+				</section>
+				<section>
+					<pre class="java"><code>
+@Override
+protected boolean validate(StartGeneralInstructionsWorkflowRequest req, ConstraintValidatorContext ctx) {
+  ParamsObj params = req.getParameters();
+  if (ParamsObj.verify(params)) {
+    addConstraintViolation(ctx, params);
+    return false;
+  }
+  return true;
+}
+					</code></pre>
+					<aside>acceptable</aside>
+				</section>
+				<section>
+					Constructors vs Static Factory Method
+				</section>
+				<section>
+					<pre><code>
+class Employee {
+  Employee(int type) {
+    this.type = type;
+  }
+  //...
+}
+	</code></pre>
+				</section>
+				<section>
+					<pre><code>
+class Employee {
+  static Employee create(int type) {
+    employee = new Employee(type);
+    // do some heavy lifting.
+    return employee;
+  }
+  //...
+}
+						</code></pre>
+					<aside>more flexible, future use of subclasses</aside>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					Functions
+				</section>
+				<section>
+					<pre class="java"><code>
+if (null != apEntity && ManagerOptions.CENTAL_ONLY == apEntity.getMgmtStyle().getModelManager() && null != modelMap) {
+  int voilations = 0;
+  List&lt;AccountInvestmentFrameworkComponentEntity&gt; components = request.getAccountInvestmentFrameworkEntity().getAccountIFComponents();
+  if (null != modelMap && null != components) {
+	for (AccountInvestmentFrameworkComponentEntity component : components) {
+	  if ((ACTION.UPDATE == component.getAction() || ACTION.INSERT == component.getAction()) && Boolean.TRUE == component.getMAPParticipationEnabled() && null != component.getModel() && null != component.getModel().getModelId()) {
+		ModelEntity model = modelMap.get(component.getModel().getModelId());
+		if (ModelOwnerType.CENTRAL != model.getOwnershipType()) {
+		  addConstraintViolation(ctx, component.getComponentName());
+  		  ++voilations;
+		}
+	  }
+	}
+	if (voilations > 0) {
+	  return false;
+	}
+  }
+}
+					</code></pre>
+					<aside>small, same level of abstraction</aside>
+				</section>
+				<section>
+					<pre class="java"><code>
+class Concert...
+public Booking book (Customer aCustomer, boolean isPremium) {...}
+</code></pre>
+					<aside>Flag arguments</aside>
+					<pre class="java"><code>
+class Concert...
+public Booking ordinaryBook (Customer aCustomer) {...}
+public Booking premiumBook (Customer aCustomer) {...}
+							</code></pre>
+				</section>
+				<section>
+					<pre class="java"><code>
+try {
+  deletePage(page); 
+  registry.deleteReference(page.name); 
+  configKeys.deleteKey(page.name.makeKey());
+}
+catch (Exception e) {
+  logger.log(e.getMessage()); 
+}
+					</code></pre>
+					<aside>Extract try/catch blocks</aside>
+					<pre class="java"><code>
+try {
+  deletePageAndAllReferences(page);
+}
+catch (Exception e) {
+  logError(e);
+}
+					</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					Comments
+				</section>
+				<section>
+					<pre class="java"><code>
+// Utility method that returns when this.closed is true. Throws an exception 
+// if the timeout is reached.
+public synchronized void waitForClose(final long timeoutMillis)
+throws Exception {
+  if(!closed) {
+    wait(timeoutMillis); 
+    // wait old code, 
+    if(!closed)
+      throw new Exception("MockResponseSender could not be closed"); 
+  }
+}
+</code></pre>
+					<aside>redundancy, old code</aside>
+				</section>
+			</section>
+			<section>
+				<section>
+					Error Handling
+				</section>
+				<section>
+					<pre class="java">
+						<code>
+public void registerItem(Item item) { 
+  if (item != null) {
+    ItemRegistry registry = peristentStore.getItemRegistry();
+    if (registry != null) {
+      Item existing = registry.getItem(item.getID());
+      if (existing.getBillingPeriod().hasRetailOwner()) {
+        existing.register(item); 
+      }
+    } 
+  }
+}
+						</code>
+					</pre>
+					<aside>Don't pass null around, return safe values</aside>
+				</section>
+			</section>
+			<section>
+				<h2>Stay tuned for</h2>
+				<img data-src="images/clean-code/clean-code-text-book.jpg" class="clearheaded">
+				<h3>Clean Code, part 2</h3>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+
+		// for any reference:
+		// https://github.com/hakimel/reveal.js#online-editor
+		Reveal.initialize({
+			controlsLayout: 'edges',
+			slideNumber: 'c/t',
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
