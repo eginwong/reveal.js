@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>bit manipulation 101</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/eginwong.css">
+
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<img data-src="http://img1.joyreactor.com/pics/post/wrong-hands-gam-games-8-bit-2083427.jpeg" style="width: 40%" class="clearheaded">
+				<h3>Bit Manipulation 101</h3>
+				<br>
+				<br>
+				<h6>eric.t.wong@cgi.com</h6>
+			</section>
+			<section>
+				<section>
+					It's a <i>bit</i> useful for :
+					<div class="fragment">
+						<p>graphics</p>
+						<p>encryption</p>
+						<p>embedded systems</p>
+						<p>performance</p>
+					</div>
+				</section>
+			</section>
+			<section>
+				<img data-src="http://www.circuitgrove.com/sites/default/files/tutorial_photos/bitbyte.svg" class="clearheaded" style="width:80%"/>
+			</section>
+			<section>
+				<section>
+						<pre><code>
+0110 + 1001 = 1111
+0001 + 0001 = 0010
+							</code></pre>
+							<aside>addition (+)</aside>
+				</section>
+				<section>
+						<pre><code>
+1001 - 0110
+= 1001 + 1001 + 0001 
+= 1001 + 1010
+= (1)0011
+= 0011
+							</code></pre>
+							<aside>subtraction (-)</aside>
+				</section>
+				<section>
+						<pre><code>
+    1001 
+  * 0110
+=      0
++  10010
++ 100100
++      0
+==110110
+							</code></pre>
+							<aside>multiplication (*)</aside>
+				</section>
+				<section>
+						<pre><code>
+x | 0 = x
+x | 1 = 1
+x | x = x
+						</code></pre>
+							<aside>OR(|)</aside>
+				</section>
+				<section>
+						<pre><code>
+x & 0 = 0
+x & 1 = x
+x & x = x
+							</code></pre>
+							<aside>AND(&)</aside>
+				</section>
+				<section>
+						<pre><code>
+~1 = 0
+~0 = 1
+							</code></pre>
+							<aside>Negation(~)</aside>
+				</section>
+				<section>
+						<pre><code>
+0 ^ 0 = 0
+1 ^ 1 = 0
+0 ^ 1 = 1
+1 ^ 0 = 1
+							</code></pre>
+							<aside>XOR(^)</aside>
+				</section>
+			</section>
+			<section data-markdown>
+				##### Two's complement vs. intuitive signing
+				```
+				1001 (intuitive) = -1
+				1111 (twos complement) = -1
+				```
+				
+				* +0 and -0
+				* difficulty in bit addition
+			</section>
+			<section>
+				<section>
+					<pre><code>
+001010 (10) << 2 = 101000 (40)
+111111 (-1) << 2 = 111100 (-4)
+					</code></pre>
+					<aside>Left Shift</aside>
+				</section>
+				<section>
+					<pre><code>
+001010 (10) >>> 2 = 000010 (2)
+111111 (-1) >>> 2 = 001111 (15)
+					</code></pre>
+					<aside>Logical Right Shift</aside>
+				</section>
+				<section>
+					<pre><code>
+001010 (10) >> 2 = 000010 (2)
+111111 (-1) >> 2 = 111111 (-1)
+					</code></pre>
+					<aside>Arithmetic Shift</aside>
+				</section>
+			</section>
+			<section>
+				For more complicated usage: <a href="http://graphics.stanford.edu/~seander/bithacks.html">http://graphics.stanford.edu/~seander/bithacks.html</a>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+
+		// for any reference:
+		// https://github.com/hakimel/reveal.js#online-editor
+		Reveal.initialize({
+			controlsLayout: 'edges',
+			slideNumber: 'c/t',
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
